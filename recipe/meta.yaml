@@ -21,8 +21,10 @@ requirements:
   run:
     - coqpit
     - fsspec
+    - pysoundfile
     - python >=3.6,<3.10
     - pytorch >=1.7
+    - tensorboardx
 
 test:
   imports:
