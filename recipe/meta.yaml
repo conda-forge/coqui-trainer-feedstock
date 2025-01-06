@@ -6,23 +6,23 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/coqui_trainer-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/coqui_trainer-{{ version }}.tar.gz
   sha256: 37cfab2462f5b97195ae8efdb7441adf17bda7e4faa2d243b1c31ba5562f4d42
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
     - pip
-    - python >=3.6,<3.10
+    - python {{ python_min }}
   run:
     - coqpit
     - fsspec
     - pysoundfile
-    - python >=3.6,<3.10
+    - python >={{ python_min }},<3.10
     - pytorch >=1.7
     - tensorboardx
 
@@ -35,6 +35,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/coqui-ai/Trainer
